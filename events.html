@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events - CapturePoint</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FullCalendar CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+</head>
+<body>
+<header>
+    <div class="container header-container">
+        <div class="logo">Capture<span>Point</span></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Calendar Section -->
+<section class="calendar">
+    <div class="container">
+        <h2>Upcoming Events</h2>
+        <div id="calendar"></div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 CapturePoint. All Rights Reserved.</p>
+</footer>
+
+<!-- FullCalendar JS -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script>
+    // Initialize FullCalendar
+    document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar');
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            events: [
+                {
+                    title: 'Pokemon Run 2024',
+                    start: '2025-02-23',
+                    end: '2025-02-23'
+                },
+                {
+                    title: 'Apo Half-Marathon',
+                    start: '2025-03-15',
+                    end: '2025-03-15'
+                },
+                {
+                    title: 'Nature Photography Workshop',
+                    start: '2025-04-10',
+                    end: '2025-04-12'
+                }
+            ]
+        });
+        calendar.render();
+    });
+</script>
+<script src="mobilefr.js"></script>
+</body>
+</html>

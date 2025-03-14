@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | CapturePoint by TeamMicrett</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        
+    /* Global Styles */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Montserrat', Arial, sans-serif;
+        line-height: 1.6;
+        color: white;
+        background: linear-gradient(to left, #ff6b6b, #cc0000);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Global text shadow */
+    }
+
+    /* Wrapper to ensure content is centered and spaced properly */
+    .page-wrapper {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Header */
+    header {
+        padding: 15px;
+        color: white;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Logo text shadow */
+    }
+
+    .logo span {
+        color: #ff6b6b;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1rem;
+        padding: 5px;
+        transition: color 0.3s ease;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Navigation text shadow */
+    }
+
+    nav ul li a:hover {
+        color: #ff6b6b;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 120px 20px;
+        color: white;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Stronger shadow for hero text */
+        /* Ensure no background is overriding the body's gradient */
+        background: none; /* Explicitly set to none */
+    }
+
+    .hero-section h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Stronger shadow for hero heading */
+    }
+
+    .hero-section p {
+        font-size: 1.5rem;
+        font-weight: 300;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Stronger shadow for hero paragraph */
+    }
+
+    /* Content Section */
+    .content-section {
+        padding: 80px 20px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        margin: 20px auto;
+        max-width: 1200px;
+    }
+
+    .content-section h2 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 40px;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Shadow for content heading */
+    }
+
+    .section-wrapper {
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center items horizontally */
+        text-align: center; /* Center text within the paragraph */
+        gap: 20px; /* Add spacing between elements */
+        margin-bottom: 60px;
+    }
+
+    .section-wrapper p {
+        flex: 1;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        max-width: 800px; /* Adjust max-width for better readability */
+        color: white;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Team Section */
+    .team-section {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .team-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 280px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .team-card img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+        border: 3px solid #ff6b6b;
+    }
+
+    .team-card h3 {
+        margin-top: 10px;
+        font-size: 1.3rem;
+        color: white;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Shadow for team member names */
+    }
+
+    .team-card a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-size: 0.95rem;
+        margin-top: 10px;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Shadow for team member links */
+    }
+
+    .team-card a:hover {
+        text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+        text-align: center;
+        padding: 30px;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        margin-top: auto;
+    }
+
+    .footer p {
+        margin: 0;
+        font-size: 1rem;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Shadow for footer text */
+    }
+
+    /* Social Links */
+    .social-links {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .social-links a img {
+        width: 36px;
+        height: 36px;
+        margin: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .social-links a img:hover {
+        transform: scale(1.1);
+    }
+</style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <header>
+            <div class="container header-container">
+                <div class="logo">Capture<span>Point</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero-section">
+            <h1>CapturePoint by TeamMicrett</h1>
+            <p>Preserving your race day memories with high-quality photography.</p>
+        </section>
+
+        <section class="container content-section">
+            <h2>About Us</h2>
+            <div class="section-wrapper">
+                <p>
+                    At <strong>CapturePoint by TeamMicrett</strong>, we are passionate about capturing the essence of every runner's journey. Through our lens, we immortalize the raw enthusiasm, unwavering dedication, and triumphant achievements of each individual. Whether it's the nervous excitement of your first 5K or the seasoned determination of your tenth marathon, we believe every stride you take tells a powerful and enduring story.
+                    <br><br>
+                    Our mission is to preserve these moments—not just as photographs, but as timeless memories that inspire and motivate. We understand the sweat, the effort, and the heart that goes into every race, and we are here to ensure that your hard work and accomplishments are celebrated in every frame. From the starting line to the finish, we are committed to delivering high-quality photography that reflects the spirit of your journey.
+                    <br><br>
+                    At CapturePoint, we don’t just take pictures; we capture emotions, milestones, and the unbreakable spirit of runners like you. Let us be a part of your story, preserving the moments that define your passion for running.
+                </p>
+            </div>
+        </section>
+
+        <section class="container content-section">
+            <h2>Meet the Team</h2>
+            <div class="team-section">
+                <div class="team-card">
+                    <img src="images/cris-agustin.jpg" alt="Cris Agustin">
+                    <h3><a href="https://www.facebook.com/cris.agustin.1806">Cris Agustin</a></h3>
+                </div>
+                <div class="team-card">
+                    <img src="images/am-shots.jpg" alt="AM Shots">
+                    <h3><a href="https://www.facebook.com/profile.php?id=61556783562430">AM Shots</a></h3>
+                </div>
+                <div class="team-card">
+                    <img src="images/team-micrett.jpg" alt="Team Micrett">
+                    <h3><a href="https://www.facebook.com/teammicrett">Team Micrett</a></h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="container content-section">
+            <h2>Our Web Developers</h2>
+            <div class="team-section">
+                <div class="team-card">
+                    <img src="images/silas-manlulu.png" alt="Silas Manlulu">
+                    <h3>Silas Manlulu</h3>
+                    <a href="mailto:spmanlulu@mymail.mapua.edu.ph">spmanlulu@mymail.mapua.edu.ph</a>
+                </div>
+                <div class="team-card">
+                    <img src="images/kenneth-ibardaloza.jpg" alt="Kenneth Ibardaloza">
+                    <h3>Kenneth Ibardaloza</h3>
+                    <a href="mailto:kllibardaloza@mymail.mapua.edu.ph">kllibardaloza@mymail.mapua.edu.ph</a>
+                </div>
+                <div class="team-card">
+                    <img src="images/marcus-agustin.jpg" alt="Marcus Agustin">
+                    <h3>Marcus Agustin</h3>
+                    <a href="mailto:mdagustin@mymail.mapua.edu.ph">mdagustin@mymail.mapua.edu.ph</a>
+                </div>
+                <div class="team-card">
+                    <img src="images/heherson-sarenas.jpg" alt="Heherson Sarenas">
+                    <h3>Heherson Sarenas</h3>
+                    <a href="mailto:hcsarenas@mymail.mapua.edu.ph">hcsarenas@mymail.mapua.edu.ph</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2025 CapturePoint. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

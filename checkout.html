@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - CapturePoint</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="container header-container">
+        <div class="logo">CapturePoint</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="checkout">
+    <div class="container">
+        <h2>Checkout</h2>
+        <div class="checkout-grid">
+            <!-- Billing Information -->
+            <section class="billing-info">
+                <h3>Billing Information</h3>
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="johndoe@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" placeholder="123 Main St" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" placeholder="New York" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zip">ZIP Code</label>
+                        <input type="text" id="zip" name="zip" placeholder="10001" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" placeholder="Philippines" required>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Payment Information -->
+            <section class="payment-info">
+                <h3>Payment Information</h3>
+                <form id="payment-form">
+                    <div class="form-group">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" id="cardnumber" name="card-number" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expiry-date">Expiry Date</label>
+                        <input type="text" id="expirydate" name="expiry-date" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                    </div>
+                </form>
+            </section>
+
+            
+
+            <!-- Order Summary -->
+            <section class="order-summary">
+                <h3>Order Summary</h3>
+                <div id="cart-items">
+                    <!-- Cart items will be dynamically inserted here -->
+                </div>
+                <div class="summary-item total">
+                    <p>Total</p>
+                    <p id="total-price">₱0.00</p>
+                </div>
+                <button type="submit" id="submit" class="btn">Place Order</button>
+            </section>
+            
+
+
+
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 CapturePoint. All Rights Reserved.</p>
+</footer>
+
+<script type="module">
+    // Import Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyDfC5TnxL8Yl4zHrthm73QOeNiArZtw-4E",
+        authDomain: "capturepoint-d84fc.firebaseapp.com",
+        databaseURL: "https://capturepoint-d84fc-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "capturepoint-d84fc",
+        storageBucket: "capturepoint-d84fc.firebasestorage.app",
+        messagingSenderId: "113147726516",
+        appId: "1:113147726516:web:4a5272224197ce6591a5e1",
+        measurementId: "G-1Z5QBLY52E"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // Get form elements
+    const checkoutForm = document.querySelector("#checkout-form");
+    const paymentForm = document.querySelector("#payment-form");
+    const submitBtn = document.querySelector("#submit");
+
+    // Function to submit data
+    function submitData() {
+        const fullname = document.querySelector("#fullname").value;
+        const email = document.querySelector("#email").value;
+        const address = document.querySelector("#address").value;
+        const city = document.querySelector("#city").value;
+        const zip = document.querySelector("#zip").value;
+        const country = document.querySelector("#country").value;
+
+        const cardnumber = document.querySelector("#cardnumber").value;
+        const expirydate = document.querySelector("#expirydate").value;
+        const cvv = document.querySelector("#cvv").value;
+
+        if (fullname && email && cardnumber) {
+            set(ref(db, "Orders/" + fullname.replace(/\s+/g, '_')), {
+                billingInfo: {
+                    fullname: fullname,
+                    email: email,
+                    address: address,
+                    city: city,
+                    zip: zip,
+                    country: country,
+                },
+                paymentInfo: {
+                    cardnumber: cardnumber,
+                    expirydate: expirydate,
+                    cvv: cvv,
+                }
+            })
+            .then(() => {
+                alert("Order placed successfully!");
+                checkoutForm.reset();
+                paymentForm.reset();
+            })
+            .catch((error) => {
+                alert("Error: " + error.message);
+            });
+        } else {
+            alert("Please fill out all required fields!");
+        }
+    }
+
+    // Add event listener for submission
+    submitBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent form from refreshing
+        submitData();
+    });
+</script>
+
+<script>
+    // Add to Cart Functionality
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const name = button.getAttribute('data-name'); // Get the image name
+            const price = 125; // Fixed price for each photo
+
+            // Get existing cart or initialize an empty array
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Check if the item already exists in the cart
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1; // Increase quantity if item exists
+            } else {
+                cart.push({ name, price, quantity: 1 }); // Add new item to cart
+            }
+
+            // Save updated cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`${name} added to cart!`);
+        });
+    });
+</script>
+
+<script src="mobilefr.js"></script>
+<script src="displaycart.js"></script>
+<script src="submit.js"></script>
+</body>
+</html>
