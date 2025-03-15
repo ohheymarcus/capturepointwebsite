@@ -34,11 +34,17 @@
 
 
 
-    
-
     <footer>
         <p>&copy; 2025 CapturePoint. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        document.addEventListener('contextmenu', function (e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+    </script>
 
     <script src="imagecara.js"></script>
     <script src="mobilefr.js"></script>

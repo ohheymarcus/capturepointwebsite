@@ -74,6 +74,13 @@
 </footer>
 
 <script>
+
+    document.addEventListener('contextmenu', function (e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+        }
+    });
+
     // JavaScript to handle modal functionality and watermark
     const thumbnails = document.querySelectorAll('.thumbnail');
     const modal = document.getElementById('modal');

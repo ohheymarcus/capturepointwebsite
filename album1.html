@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon Run 2024 - CapturePoint</title>
+    <title>Pokemon Run 2025 - CapturePoint</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,11 +24,11 @@
 
 <section class="album">
     <div class="container">
-        <h2>Pokemon Run 2024</h2>
+        <h2>Pokemon Run 2025</h2>
         <div class="event-grid">
             <!-- Event Cards -->
             <div class="event-card">
-                <img src="images/1.jpeg" alt="Pokemon Run 2024" class="thumbnail">
+                <img src="images/1.jpeg" alt="Pokemon Run 2025" class="thumbnail" oncontextmenu="return false;">
                 <h3>Pokemon Run 2024</h3>
                 <p>23 Feb, 2025</p>
                 <p class="price" data-name="₱125">>₱125</p>
@@ -74,6 +74,15 @@
 </footer>
 
 <script>
+
+    //for disabling right click
+
+    document.addEventListener('contextmenu', function (e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+        }
+    });
+
     // JavaScript to handle modal functionality and watermark
     const thumbnails = document.querySelectorAll('.thumbnail');
     const modal = document.getElementById('modal');

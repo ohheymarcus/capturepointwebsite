@@ -32,7 +32,7 @@
                     <!-- Album 1 -->
 <div class="gallery-item">
     <a href="album1.html">
-        <img src="images/1.jpeg" alt="Pokemon Run 2024">
+        <img src="images/1.jpeg" oncontextmenu="return false;" alt="Pokemon Run 2024">
         <div class="gallery-item-overlay">
             <h4>Pokemon Run 2024</h4>
             <p>Date: January 15, 2024</p>
@@ -43,7 +43,7 @@
 <!-- Album 2 -->
 <div class="gallery-item">
     <a href="album2.html">
-        <img src="images/01.jpeg" alt="NU Bulldog Run 2024">
+        <img src="images/01.jpeg" oncontextmenu="return false;" alt="NU Bulldog Run 2024">
         <div class="gallery-item-overlay">
             <h4>NU Bulldog Run 2024</h4>
             <p>Date: February 10, 2024</p>
@@ -65,6 +65,15 @@
     <footer>
         <p>&copy; 2025 CapturePoint. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        document.addEventListener('contextmenu', function (e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+    </script>
+
 
     <script>
         function addAlbum() {
